@@ -1,15 +1,10 @@
 
 const moment = require('moment');
-
-
-
 var addTimeArray = (timeArray) => {
-    var splitter = /^(\d{0,2}:)?(\d{0,2}:)(\d{0,2})$|^(\d{0,2})$/;
-    //var splitter = /^(\d{0,2})$/;
-
-    var totalTime = moment.duration("00:00:00");
-    var badValues = [];
-    var returnValue;
+    const splitter = /^(\d{0,2}:)?(\d{0,2}:)(\d{0,2})$|^(\d{0,2})$/;
+    let totalTime = moment.duration("00:00:00");
+    let badValues = [];
+    let returnValue;
     for (time of timeArray) {
         try{
             let [,hours,minutes,seconds,secondsOnly] = splitter.exec(time);
@@ -32,7 +27,6 @@ var addTimeArray = (timeArray) => {
     }  else {
         returnValue.text=badValues.join(',');
         return returnValue;
-
     }
      
 }
